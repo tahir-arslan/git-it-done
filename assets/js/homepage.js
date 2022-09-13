@@ -62,9 +62,12 @@ var displayRepos = function(repos, searchTerm) {
     for (var i = 0; i < repos.length; i++) {
         // capture and format repo name
         var repoName = repos[i].owner.login + "/" + repos[i].name;
-        // create container for each repo
-        var repoEl = document.createElement("div");
+        // create link for each repo
+        var repoEl = document.createElement("a");
         repoEl.classList = "list-item flex-row justify-space-between align-center";
+        // links to single-repo.html via query. in single.js, repo is already defined. this way, repoName 
+        // (defined above, passes it's information to the `repo` variable defined in single.js)
+        repoEl.setAttribute("href", "./single-repo.html?repo=" + repoName);
         // create span element to hold repo name
         var titleEl = document.createElement("span");
         titleEl.textContent = repoName;
