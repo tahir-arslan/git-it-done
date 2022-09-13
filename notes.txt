@@ -22,4 +22,13 @@ status codes:
 
 when testing for connection errors, can either disconnect internet or put in wrong URL (correct afterwards)
 
+6.2
 Fetch API is created around javascript promise
+
+In this lesson, using GitHub api limits the amount of information sent to 30. This is different 
+    for each API used (must refer to documentation for information and limitations)
+
+HTTP headers allow client and server to pass aditional info with HTTP request or response
+    ex. whether or not to cache (locally store), if so for how long
+    goes into header because filesize is small and not relevant to content in the body of a request/response
+    
