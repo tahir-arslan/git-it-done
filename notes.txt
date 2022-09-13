@@ -1,0 +1,25 @@
+6.1
+var getUserRepos = function() {
+    fetch("https://api.github.com/users/octocat/repos")
+        .then(function(response) {
+            // response object has a method called .json() to format to JSON. If the return
+            // is non-JSON data, then another method should be used like .text() as a solution
+            response.json()
+            // this .json() returns another promise, therefore the next .then() method is required
+            // it's callback function is going to capture the actual data
+                .then(function(data) {
+                    console.log(data);
+                });
+        });
+    console.log("outside");
+};
+
+status codes:
+    in the 200s means HTTP request was successful
+    in the 400s means HTTP request received but issue with how the request was made
+        ex. missing info, user/page that does not exist, etc
+    in the 500s means error with server or lack of internet connection to make request
+
+when testing for connection errors, can either disconnect internet or put in wrong URL (correct afterwards)
+
+Fetch API is created around javascript promise
