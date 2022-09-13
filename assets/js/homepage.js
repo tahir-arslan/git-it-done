@@ -2,6 +2,7 @@ var userFormEl = document.querySelector("#user-form");
 var nameInputEl = document.querySelector("#username");
 var repoContainerEl = document.querySelector("#repos-container");
 var repoSearchTerm = document.querySelector("#repo-search-term");
+var languageButtonsEl = document.querySelector("#language-buttons");
 
 var getUserRepos = function(user) {
     // format github api url to be dynamic
@@ -92,4 +93,30 @@ var displayRepos = function(repos, searchTerm) {
     console.log(searchTerm);
 }
 
+var getFeaturedRepos = function(language) {
+    var apiUrl = "https://api.github.com/search/repositories?q=" + language + "+is:featured&sort=help-wanted-issues";
+    fetch(apiUrl)
+        .then(function(response) {
+            if (response.ok) {
+                response.json()
+                    .then(function(data) {
+                        displayRepos(data.items, language);
+                    });
+            } else {
+                alert("Error: GitHub user not found");
+            }
+        });
+};
+
+var buttonClickHandler = function(event) {
+    var language = event.target.getAttribute("data-language");
+    if (language) {
+        getFeaturedRepos(language);
+        // clear old content. remember, since getFeaturedRepos fxn is asynchronous, the code below
+        // will execute first regardless of the order in this case.
+        repoContainerEl.textContent = "";
+    }
+}
+
 userFormEl.addEventListener("submit", formSubmitHandler);
+languageButtonsEl.addEventListener("click", buttonClickHandler);

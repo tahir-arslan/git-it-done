@@ -56,5 +56,15 @@ Location Web API (browser-based tool) is used to retrieve query parameter in thi
 when creating app, make sure to brainstorm as many issues/errors as possible to created
     solutions for error handling
 
+6.5
+https://docs.github.com/en/rest/search#search-repositories
+    for github api documentation on searching repos
+
+when using parameters in the URL, we can use multiple parameters and seperate them using `&`
+    GitHub API allows users to add additional parameters known as qualifiers by adding `+is:featured`
+    case of GitHub. can also use as many parameters as needed, as long as URL < 255 chars.
+        ex. https://api.github.com/search/repositories?q=javascript+html+css+is:featured&sort=stars
+            in this example, `css` is the last keyword, `is:feature` is last qualifier
+            
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 issues:
